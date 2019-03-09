@@ -33,11 +33,11 @@ RUN wget -q -e use_proxy=yes https://archive.apache.org/dist/tomcat/tomcat-8/v8.
 ENV JAVA_OPTS="-Dtuf.environment=DEV -Dtuf.appFiles.rootDirectory=/TempDirRoot" 
 
 
-RUN groupadd -r safe 
-RUN useradd  -r -g safe safe 
-RUN mkdir -p /tomcat/webapps /TempDirRoot
-RUN chown -R 1001:1001 /tomcat /TempDirRoot 
-RUN chmod -R 777 /tomcat /TempDirRoot 
+#RUN groupadd -r safe 
+#RUN useradd  -r -g safe safe 
+RUN mkdir -p /tomcat/webapps /TempDirRoot && \
+    chgrp -R 0 /tomcat /TempDirRoot && \
+    chmod -R g=u /tomcat /TempDirRoot 
 
 RUN cd /tomcat/webapps/; rm -rf ROOT docs examples host-manager manager 
 

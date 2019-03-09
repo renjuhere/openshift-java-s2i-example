@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "S2I assemble being overloaded on " date "+%b %d %y @ %H:%M:%S"
+echo "Executing original assemble script"
+/usr/libexec/s2i/assemble
+rc=$?
+
+if [ $rc eq 0 ]; then
+	echo "Exiting overloaded assemble script with non zero RC" $rc
+else 
+	
+fi
+
+echo "Exiting overloaded assemble script with RC" $rc
+

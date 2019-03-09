@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "S2I run being overloaded on " date "+%b %d %y @ %H:%M:%S
+echo "Executing original run script"
+exec /usr/libexec/s2i/run
